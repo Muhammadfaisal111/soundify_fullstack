@@ -34,3 +34,6 @@ coverage/
 # Uploads or temporary files
 uploads/
 tmp/
+
+# build output
+dist/
