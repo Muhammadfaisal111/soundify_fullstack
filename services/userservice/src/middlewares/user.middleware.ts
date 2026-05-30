@@ -24,17 +24,17 @@ export const isAuth = async (
 
     const decodedValue = jwt.verify(
       token,
-      process.env.JWT_SEC as string
+      process.env.JWT_SECRET as string
     ) as JwtPayload;
 
-    if (!decodedValue || !decodedValue._id) {
+    if (!decodedValue || !decodedValue.id) {
       res.status(403).json({
         message: "Invalid token",
       });
       return;
     }
 
-    const userId = decodedValue._id;
+    const userId = decodedValue.id;
 
     const user = await User.findById(userId).select("-password");
 
